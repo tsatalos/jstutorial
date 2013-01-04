@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Hello World</title>
+<style>
+
+
+</style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
+<script>
+
+$(function () {
+    // this is setup code
+    var body = $('body')
+    var width = body.width()
+    var height = body.height();
+    var canvas = $('<canvas/>').attr('width', width).attr('height', height)
+    body.append(canvas)
+    var c = canvas.get()[0].getContext("2d")
+
+    setInterval(function () {
+        // this code will run over and over again...
+
+        // this paints just a bit of whiteness over everything
+        c.fillStyle = "rgba(255, 255, 255, 0.05)"
+        c.fillRect(0, 0, width, height)
+
+        // let's decide where to place a circle
+        var x = width * Math.random()
+        var y = height * Math.random()
+        var size = 100 * Math.random()
+
+        // now let's actually draw the circle
+        c.beginPath()
+        c.arc(x, y, size, 0, Math.PI*2, true)
+        c.closePath()
+        c.fillStyle = "black"
+        c.fill()
+    }, 100)
+})
+
+</script>
+</body>
+</html>
